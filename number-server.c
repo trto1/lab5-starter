@@ -11,6 +11,8 @@ void handle_404(int client_sock, char *path)  {
     // snprintf includes a null-terminator
 
     // TODO: send response back to client?
+    write(client_sock, HTTP_404_NOT_FOUND, strlen(HTTP_404_NOT_FOUND));
+    write (client_sock, "Error", strlen ("Error"));
 }
 
 
@@ -27,6 +29,7 @@ void handle_response(char *request, int client_sock) {
 
     handle_404(client_sock, path);
 }
+
 
 int main(int argc, char *argv[]) {
     int port = 0;
